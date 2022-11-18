@@ -23,7 +23,7 @@ redis_caching = False
 # SECURITY WARNING: keep the secret key used in production secret!
 if downloaded_from_github:
     SECRET_KEY = "ajc6=9)8sdqfascd^0ul(asfdfwergvesa0)gasjlcewrvtsv252f3thdcffsa" 
-    # You can set a custom SECRET_KEY here, it consists of 
+    # You can set a custom SECRET_KEY here, it should consist of 
     # 60-ish random characters, and is used for encrypting the user cookies.
     # Otherwise, you can leave this random key as is.
 else:
