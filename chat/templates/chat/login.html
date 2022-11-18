@@ -1,0 +1,30 @@
+{% extends "chat/base.html" %}
+
+{% block title %}Log In | {% endblock %}
+
+{% block content %}
+<div class="lg:w-1/2 lg:mx-auto px-10 py-10 bg-gray-800">
+    <h1 class="text-4xl text-white">Log In</h1>
+</div>
+<div class="lg:w-1/2 lg:mx-auto px-10 py-10 bg-gray-800 rounded-bl-lg rounded-br-lg">
+    <form method="post" action=".">
+        {% csrf_token %}
+        <div class="mb-6">
+            <label class="block mb-2 text-sm font-medium text-gray-300">Username</label>
+            <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" required>
+        </div>
+        <div class="mb-6">
+            <label class="block mb-2 text-sm font-medium text-gray-300">Password</label>
+            <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" required>
+        </div>
+        <div class="flex justify-between">
+            <button type="submit" class="px-5 py-3 rounded-lg text-white bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:bg-rose-500 hover:shadow-rose-500/50 self-center">Log In</button>
+            {% if form.non_field_errors %}
+                <div class="px-5 py-3 rounded-lg border border-rose-500 text-white self-center">
+                    <p>{{ form.non_field_errors }}</p>
+                </dif>
+            {% endif %}
+        </div>
+    </form>
+</div>
+{% endblock %}

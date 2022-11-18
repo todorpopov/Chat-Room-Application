@@ -1,0 +1,39 @@
+{% extends "chat/base.html" %}
+
+{% block title %}Welcome | {% endblock %}
+
+{% block content %}
+<div class="lg:w-1/2 lg:mx-auto px-10 py-10 bg-gray-800 rounded-bl-lg rounded-br-lg">
+    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-4xl text-white">Welcome to <span class="indigo-500 text-indigo-500">Chat Lounge</span></h1>
+    <p class="text-lg font-normal text-gray-500 lg:text-xl text-gray-400">A Chat Room Web Application developed in <span class="text-white font-semibold underline decoration-indigo-500">Python</span> using the <span class="text-white font-semibold underline decoration-indigo-500">Django</span> framework.</p>
+
+    <hr class="my-8 h-px bg-gray-200 border-0 bg-gray-700">
+
+    <p class="mb-3 text-xl font-light text-gray-500 text-gray-400">The application uses <span class="text-white font-semibold underline decoration-indigo-500">Channel Layers</span>, in the back-end, and 
+        <span class="text-white font-semibold underline decoration-indigo-500">JavaScript WebSockets</span>, in the front-end, to connect different users together, allow them to write text messages, and send them for everyone else in the room to see.</p>
+    <p class="mb-3 text-xl font-light text-gray-500 text-gray-400">It also uses a <span class="text-white font-semibold underline decoration-indigo-500">Redis server</span>, built and ran using <span class="text-white font-semibold underline decoration-indigo-500">Docker</span>, as cache for the 
+        Channel Layers. This is the only officially supported cache for production use, as explained in the <a href="https://channels.readthedocs.io/en/stable/topics/channel_layers.html#redis-channel-layer" class="font-medium text-gray-500 underline text-gray-500 hover:no-underline">official documentation.</a></p>
+    <p class="mb-3 text-xl font-light text-gray-500 text-gray-400">The web server of choice is <span class="text-white font-semibold underline decoration-indigo-500">Daphne</span>, a server suitable for <span class="text-white font-semibold underline decoration-indigo-500">ASGI</span> applications.</p>
+    <p class="mb-3 text-xl font-light text-gray-500 text-gray-400">For more information: <a href="https://github.com/todorpopov/Chat-Room-Application" class="font-medium text-gray-500 underline text-gray-500 hover:no-underline">GitHub repository</a></p>
+    <hr class="my-8 h-px bg-gray-200 border-0 bg-gray-700">
+
+    <h2 class="mb-2 text-lg font-semibold text-white">Current features:</h2>
+    <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 text-gray-400">
+        <li>
+            Sending and receiving text messages
+        </li>
+        <li>
+            Signing up, logging in, and logging out
+        </li>
+        <li>
+            Multiple chat rooms
+        </li>
+        <li>
+            Displaying the number of online users
+        </li>
+        <li>
+            Responsive and easy-to-use UI
+        </li>
+    </ul>
+</div>
+{% endblock %}
