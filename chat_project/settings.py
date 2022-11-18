@@ -8,11 +8,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-hosting_variable = False  #based on this variable, the confuguration changes to meet different environments
+downloaded_from_github = False  
+# Variable used for managing the secret key, so it is different 
+# from the one on my local machine.
+# Set to "True", before running the app on your machine.
+
+
+redis_caching = False 
+# variable used for setting the CHANNEL_LAYERS setting, when set 
+# to "True", it will except a Redis server available at "localhost:6379".
+# If you don't want to set up a Redis server, set the variable to "False", this way 
+# it will use the "InMemoryChannelLayer", instead of the "RedisChannelLayer".
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if hosting_variable:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+if downloaded_from_github:
+    SECRET_KEY = "ajc6=9)8sdqfascd^0ul(asfdfwergvesa0)gasjlcewrvtsv252f3thdcffsa" 
+    # You can set a custom SECRET_KEY here, it consists of 
+    # 60-ish random characters, and is used for encrypting the user cookies.
+    # Otherwise, you can leave this random key as is.
 else:
     secret_key_path = os.path.join(BASE_DIR, "chat_project/secret_key.txt")
     with open(secret_key_path, 'r') as f:
@@ -77,7 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'chat_project.wsgi.application'
 ASGI_APPLICATION = 'chat_project.asgi.application'
 
-if hosting_variable:
+if redis_caching:
     CHANNEL_LAYERS = {
         "default": {
             "BACKEND": "channels_redis.core.RedisChannelLayer",
@@ -90,11 +103,8 @@ if hosting_variable:
 else:
     CHANNEL_LAYERS = {
         "default": {
-            "BACKEND": "channels_redis.core.RedisChannelLayer",
-            "CONFIG": {
-                "hosts": [("127.0.0.1", 6379)],
-            },
-        },
+            "BACKEND": "channels.layers.InMemoryChannelLayer"
+        }
     }
 
 # Database
