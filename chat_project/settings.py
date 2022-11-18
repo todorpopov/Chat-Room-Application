@@ -8,13 +8,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-downloaded_from_github = False  
+downloaded_from_github = False
 # Variable used for managing the secret key, so it is different 
 # from the one on my local machine.
 # Set to "True", before running the app on your machine.
 
 
-redis_caching = False 
+redis_caching = False
 # variable used for setting the CHANNEL_LAYERS setting, when set 
 # to "True", it will except a Redis server available at "localhost:6379".
 # If you don't want to set up a Redis server, set the variable to "False", this way 
@@ -24,7 +24,8 @@ redis_caching = False
 if downloaded_from_github:
     SECRET_KEY = "ajc6=9)8sdqfascd^0ul(asfdfwergvesa0)gasjlcewrvtsv252f3thdcffsa" 
     # You can set a custom SECRET_KEY here, it should consist of 
-    # 60-ish random characters, and is used for encrypting the user cookies.
+    # 60-ish random characters, and is used for encrypting 
+    # the user's information used for the cookies.
     # Otherwise, you can leave this random key as is.
 else:
     secret_key_path = os.path.join(BASE_DIR, "chat_project/secret_key.txt")
@@ -95,11 +96,10 @@ if redis_caching:
         "default": {
             "BACKEND": "channels_redis.core.RedisChannelLayer",
             "CONFIG": {
-                "hosts": [os.environ.get('REDIS_URL', ("localhost", 6379))],
+                "hosts": [("127.0.0.1", 6379)],
             },
         },
     }
-
 else:
     CHANNEL_LAYERS = {
         "default": {
