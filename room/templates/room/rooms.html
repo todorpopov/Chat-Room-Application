@@ -13,10 +13,12 @@
             <div class="p-1 bg-gray-200 rounded-lg whitespace-normal break-words flex justify-between">
                 <div class="p-1 align-center">
                     <p class="font-bold text-left text-rose-500 align-top">{{ room.name }}</p>
-                    <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded bg-green-200 text-green-900 align-bottom">{{ room.users_online }} online</span>
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5
+                        py-0.5 rounded bg-green-200 text-green-900 align-bottom">{{ room.users_online }} online</span>
                 </div>
                 <div class="self-center">
-                    <a href="{% url 'room' room.slug %}" class = "px-5 py-3 rounded-lg text-white bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:bg-rose-500 hover:shadow-rose-500/50">Join</a>
+                    <a href="{% url 'room' room.slug %}" class = "px-5 py-3 rounded-lg text-white 
+                        bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:bg-rose-500 hover:shadow-rose-500/50">Join</a>
                 </div>
             </div>
         {% endfor %}

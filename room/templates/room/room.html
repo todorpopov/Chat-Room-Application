@@ -30,8 +30,12 @@
     <div class="lg:w-3/4 lg:mx-auto bg-gray-800 py-4">
         <form method="post" action="." class="flex space-x-4">
             {% csrf_token %}
-            <input type="text" name="content" class="px-5 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Enter message..." id="chat-message-input">
-            <button class="px-5 py-2 rounded-lg text-white bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:bg-rose-500 hover:shadow-rose-500/50" id="chat-message-submit">Submit</button>
+            <input type="text" name="content" class="px-5 bg-gray-50 border border-gray-300 text-sm 
+                rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 
+                border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" 
+                placeholder="Enter message..." id="chat-message-input">
+            <button class="px-5 py-2 rounded-lg text-white bg-indigo-500 shadow-lg shadow-indigo-500/50 
+                hover:bg-rose-500 hover:shadow-rose-500/50" id="chat-message-submit">Submit</button>
         </form>
     </div>
 </div>
@@ -53,25 +57,30 @@
         element.scrollTop = element.scrollHeight;
     }
 
-    function is_clean(text) {
-        const list_of_characters = ["<", ">", "&"];
+    document.querySelector("#chat-message-submit").onclick = function(e){
+        e.preventDefault();
 
-        for(let i = 0; i < list_of_characters.length; i++) {
-            if (text.includes(list_of_characters[i])) {
-                return false;
-            }
+        const message_input = document.querySelector("#chat-message-input");
+        const message = message_input.value;
+        if(message){
+            chat_socket.send(JSON.stringify({
+                "message": message,
+                "username": user_name,
+                "room": room_name
+            }));
         }
-        return true;
+        else {
+            alert("The message was empty!");
+        }
+        message_input.value = "";
+
+        return false;
     }
 
     chat_socket.onmessage = function(e){
         const data = JSON.parse(e.data);
 
         if(data.message){
-            if(!is_clean(data.message)){
-                alert("This message contains HTML code! It will be escaped before adding to the chat.")
-            }
-
             if(data.username == user_name){
                 let html = '<div class="whitespace-normal break-words">';
                     html += '<p class="text-gray-400 text-center">' + data.date + '</p>';
@@ -96,23 +105,6 @@
         }
     }
 
-    document.querySelector("#chat-message-submit").onclick = function(e){
-        e.preventDefault();
-
-        const message_input = document.querySelector("#chat-message-input");
-        const message = message_input.value;
-        if(message){
-            chat_socket.send(JSON.stringify({
-                "message": message,
-                "username": user_name,
-                "room": room_name
-            }));
-        }
-        message_input.value = "";
-
-        return false;
-    }
     scroll_to_bottom();
-
 </script>
 {% endblock %}

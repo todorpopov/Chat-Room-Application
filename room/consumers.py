@@ -81,3 +81,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
         room = Room.objects.get(slug=slug)
         room.users_online -= 1
         room.save()
+

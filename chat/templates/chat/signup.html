@@ -11,18 +11,25 @@
         {% csrf_token %}
         <div class="mb-6">
             <label class="block mb-2 text-sm font-medium text-gray-300">Enter username</label>
-            <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-sm rounded-lg 
+                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 
+                placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div class="mb-6">
             <label class="block mb-2 text-sm font-medium text-gray-300">Enter password</label>
-            <input type="password" name="password1" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Minimum length: 8! Must include letters!" required>
+            <input type="password" name="password1" class="bg-gray-50 border border-gray-300 text-sm rounded-lg 
+                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 
+                text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Minimum length: 8! Must include letters!" required>
         </div>
         <div class="mb-6">
             <label class="block mb-2 text-sm font-medium text-gray-300">Repeat password</label>
-            <input type="password" name="password2" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="password" name="password2" class="bg-gray-50 border border-gray-300 text-sm rounded-lg 
+                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 
+                text-white focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div class="flex justify-between">
-            <button type="submit" class="px-5 py-3 rounded-lg text-white bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:bg-rose-500 hover:shadow-rose-500/50 self-center">Submit</button>
+            <button type="submit" class="px-5 py-3 rounded-lg text-white bg-indigo-500 shadow-lg shadow-indigo-500/50 
+                hover:bg-rose-500 hover:shadow-rose-500/50 self-center">Submit</button>
             {% if messages %}
                 <div class="px-5 py-3 rounded-lg border border-rose-500 text-white self-center">
                     {% for message in messages %}
