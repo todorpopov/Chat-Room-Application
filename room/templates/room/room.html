@@ -7,7 +7,7 @@
 <div class="lg:w-1/2 lg:mx-auto px-10 py-10 bg-gray-800">
     <h1 class="text-4xl text-white text-center">{{ room.name }}</h1>
 </div>
-<div class="lg:w-1/2 lg:mx-auto mx-4 p-4 bg-white bg-gray-800">
+<div class="lg:w-1/2 lg:mx-auto mx-4 p-4 bg-gray-800">
     <div class="lg:w-3/4 p-4 lg:mx-auto bg-gray-800 chat-messages" id="chat-messages">
         {% for message in messages %}
             {% if message.user.username == request.user.username %}
